@@ -79,7 +79,7 @@ public final class Task {
      *
      * @param title       title of the task
      * @param description description of the task
-     * @param id          id of the task
+     * @param id          id of kthe tas
      * @param completed   true if the task is completed, false if it's active
      */
     public Task(@Nullable String title, @Nullable String description,

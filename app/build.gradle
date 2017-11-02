@@ -30,17 +30,23 @@ android {
             testProguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguardTest-rules.pro'
         }
     }
-
     // If you need to add more flavors, consider using flavor dimensions.
+    flavorDimensions "color"
     productFlavors {
         mock {
+            dimension "color"
             applicationIdSuffix = ".mock"
         }
         prod {
-
+            dimension "color"
         }
     }
 
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "${variant.name}-${variant.versionName}.apk"
+        }
+    }
     // Remove mockRelease as it's not needed.
     android.variantFilter { variant ->
         if(variant.buildType.name.equals('release')
@@ -55,6 +61,7 @@ android {
             events 'passed', 'skipped', 'failed', 'standardOut', 'standardError'
         }
     }
+    buildToolsVersion '26.0.2'
 }
 
 /*

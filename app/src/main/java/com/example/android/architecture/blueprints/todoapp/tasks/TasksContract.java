@@ -63,7 +63,6 @@ public interface TasksContract {
 
         boolean isActive();
 
-        void showFilteringPopUpMenu();
     }
 
     interface Presenter extends BasePresenter {

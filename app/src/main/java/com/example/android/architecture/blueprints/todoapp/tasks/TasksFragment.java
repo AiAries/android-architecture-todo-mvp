@@ -180,7 +180,7 @@ public class TasksFragment extends Fragment implements TasksContract.View {
         inflater.inflate(R.menu.tasks_fragment_menu, menu);
     }
 
-    @Override
+
     public void showFilteringPopUpMenu() {
         PopupMenu popup = new PopupMenu(getContext(), getActivity().findViewById(R.id.menu_filter));
         popup.getMenuInflater().inflate(R.menu.filter_tasks, popup.getMenu());
