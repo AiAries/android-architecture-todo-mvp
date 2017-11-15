@@ -40,7 +40,7 @@ android {
     //修改生成的apk名字
     applicationVariants.all { variant ->
         variant.outputs.each { output ->
-            if ("tour".equals(IS_JENKINS)) {
+            if ("true".equals(IS_JENKINS)) {
                 def oldFile = BUILD_PATH_LOCAL + "/" + variant.versionCode
                 def releaseApkName = "todo-" + variant.productFlavors[0].name + "-" + variant.buildType.name + '.apk'
                 output.outputFile = new File(oldFile, releaseApkName)
