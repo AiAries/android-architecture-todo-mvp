@@ -15,8 +15,8 @@ android {
         applicationId "com.example.android.architecture.blueprints.todomvp"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode VERSION_CODE as int
+        versionName project.VERSION_NAME
 
         testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
     }
@@ -35,6 +35,22 @@ android {
             useProguard true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             testProguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguardTest-rules.pro'
+        }
+    }
+    //修改生成的apk名字
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            if ("tour".equals(IS_JENKINS)) {
+                def oldFile = BUILD_PATH_LOCAL + "/" + variant.versionCode
+                def releaseApkName = "todo-" + variant.productFlavors[0].name + "-" + variant.buildType.name + '.apk'
+                output.outputFile = new File(oldFile, releaseApkName)
+            } else {
+                def oldFile = output.outputFile
+                if (variant.buildType.name.equals('release')) {
+                    def releaseApkName = "todo-" + variant.productFlavors[0].name + '.apk'
+                    output.outputFile = new File(oldFile.parent, releaseApkName)
+                }
+            }
         }
     }
     // If you need to add more flavors, consider using flavor dimensions.
