@@ -17,7 +17,7 @@ android {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode VERSION_CODE as int
-        versionName project.VERSION_NAME
+        versionName "0.1.$buildNumber"
 
         testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
     }
