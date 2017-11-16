@@ -8,6 +8,7 @@ android {
             keyAlias 'key0'
             keyPassword '123456'
             storeFile file('./todo.jks')
+//            storeFile STORE_FILE as
             storePassword '123456'
         }
     }
@@ -31,8 +32,9 @@ android {
         }
 
         release {
-            minifyEnabled true
-            useProguard true
+            shrinkResources false
+            minifyEnabled false
+            useProguard false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             testProguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguardTest-rules.pro'
         }
