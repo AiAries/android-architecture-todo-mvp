@@ -43,7 +43,7 @@ android {
     applicationVariants.all { variant ->
         variant.outputs.each { output ->
             if ("true".equals(IS_JENKINS)) {
-                def oldFile = BUILD_PATH_LOCAL + "/" + variant.versionCode
+                def oldFile = BUILD_PATH_LOCAL
                 def releaseApkName = "todo-" + variant.productFlavors[0].name + "-" + variant.buildType.name + '.apk'
                 output.outputFile = new File(oldFile, releaseApkName)
             } else {
