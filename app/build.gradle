@@ -45,14 +45,15 @@ android {
     applicationVariants.all { variant ->
         variant.outputs.each { output ->
             if ("true" ==rootProject.ext.IS_JENKINS) {
-                def oldFile = BUILD_PATH_LOCAL
+                def oldFile = rootProject.ext.BUILD_PATH_LOCAL
                 def releaseApkName = "todo-" + variant.productFlavors[0].name + "-" + variant.buildType.name + '.apk'
                 output.outputFile = new File(oldFile, releaseApkName)
             } else {
-                def oldFile = output.outputFile
+//                def oldFile = output.outputFile
+                def oldFile = BUILD_PATH_LOCAL
                 if (variant.buildType.name == 'release') {
                     def releaseApkName = "todo-${variant.productFlavors[0].name}.apk"
-                    output.outputFile = new File(oldFile.parent, releaseApkName)
+                    output.outputFile = new File(oldFile, releaseApkName)
                 }
             }
         }
