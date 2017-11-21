@@ -23,7 +23,9 @@ task clean(type: Delete) {
 // Define versions in a single place
 ext {
     // Sdk and tools
-    buildNumber = System.getenv("BUILD_NUMBER") ?: "dev"
+    //BUILD_NUMBER 是Jenkins自带的变量
+    //VERSION_CODE 是自己在Jenkins配置的参数化构建选项中定义的的变量
+    version_code = System.getenv("VERSION_CODE") ?: "dev"
     minSdkVersion = 10
     targetSdkVersion = 24
     compileSdkVersion = 23

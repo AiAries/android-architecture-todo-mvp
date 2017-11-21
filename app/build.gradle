@@ -16,8 +16,9 @@ android {
         applicationId "com.example.android.architecture.blueprints.todomvp"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode VERSION_CODE as int
-        versionName "0.1.$buildNumber"
+//        versionCode VERSION_CODE as int
+        versionCode version_code as int
+        versionName "0.1.$version_code"
 
         testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
     }
