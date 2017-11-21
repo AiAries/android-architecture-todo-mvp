@@ -16,9 +16,10 @@ android {
         applicationId "com.example.android.architecture.blueprints.todomvp"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-//        versionCode VERSION_CODE as int
-        versionCode version_code as int
-        versionName "0.1.$version_code"
+//        versionCode VERSION_CODE as int//gradle.properties 定义的
+//        versionName "0.1.$version_name"//新式写法
+        versionCode rootProject.ext.VERSION_CODE as int
+        versionName rootProject.ext.VERSION_NAME
 
         testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
     }
@@ -43,14 +44,14 @@ android {
     //修改生成的apk名字
     applicationVariants.all { variant ->
         variant.outputs.each { output ->
-            if ("true" == IS_JENKINS) {
+            if ("true" ==rootProject.ext.IS_JENKINS) {
                 def oldFile = BUILD_PATH_LOCAL
                 def releaseApkName = "todo-" + variant.productFlavors[0].name + "-" + variant.buildType.name + '.apk'
                 output.outputFile = new File(oldFile, releaseApkName)
             } else {
                 def oldFile = output.outputFile
                 if (variant.buildType.name == 'release') {
-                    def releaseApkName = "todo-" + variant.productFlavors[0].name + '.apk'
+                    def releaseApkName = "todo-${variant.productFlavors[0].name}.apk"
                     output.outputFile = new File(oldFile.parent, releaseApkName)
                 }
             }

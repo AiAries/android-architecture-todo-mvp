@@ -25,7 +25,9 @@ ext {
     // Sdk and tools
     //BUILD_NUMBER 是Jenkins自带的变量
     //VERSION_CODE 是自己在Jenkins配置的参数化构建选项中定义的的变量
-    version_code = System.getenv("VERSION_CODE") ?: "dev"
+    VERSION_CODE = System.getenv("VERSION_CODE") ?: 1
+    VERSION_NAME = System.getenv("VERSION_NAME") ?: "1.0"
+    IS_JENKINS = System.getenv("IS_JENKINS") ?: false
     minSdkVersion = 10
     targetSdkVersion = 24
     compileSdkVersion = 23
