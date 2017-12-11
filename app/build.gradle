@@ -43,7 +43,7 @@ android {
     }
     //修改生成的apk名字
     applicationVariants.all { variant ->
-        variant.outputs.each { output ->
+        variant.outputs.all{ output ->
             def oldFile
             if ("true" ==rootProject.ext.IS_JENKINS) {
                  oldFile = rootProject.ext.BUILD_PATH_LOCAL
@@ -53,7 +53,7 @@ android {
             }
             def releaseApkName = "todo-${variant.productFlavors[0].name}-${variant.buildType.name}-" +
                     "${rootProject.ext.VERSION_CODE}.apk"
-            output.outputFile = new File(oldFile, releaseApkName)
+            outputFileName = new File(oldFile, releaseApkName)
         }
     }
     // If you need to add more flavors, consider using flavor dimensions.
